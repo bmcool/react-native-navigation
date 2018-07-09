@@ -293,14 +293,12 @@
             id icon = actionParams[@"icon"];
             if (icon && icon != (id)[NSNull null]) {
                 iconImage = [RCTConvert UIImage:icon];
-                iconImage = [[self image:iconImage withColor:self.tabBar.tintColor] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                UIColor *color = [UIColor colorWithRed:170.0/255.0 green:170.0/255.0 blue:170.0/255.0 alpha:1];
+                iconImage = [[self image:iconImage withColor:color] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 viewController.tabBarItem.image = iconImage;
-            }
-            
-            UIImage *iconImageSelected = nil;
-            id selectedIcon = actionParams[@"selectedIcon"];
-            if (selectedIcon && selectedIcon != (id)[NSNull null]) {
-                iconImageSelected = [RCTConvert UIImage:selectedIcon];
+                
+                UIColor *selectedColor = [UIColor colorWithRed:237.0/255.0 green:114.0/255.0 blue:110.0/255.0 alpha:1];
+                UIImage *iconImageSelected = [[self image:iconImage withColor:selectedColor] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 viewController.tabBarItem.selectedImage = iconImageSelected;
             }
             
